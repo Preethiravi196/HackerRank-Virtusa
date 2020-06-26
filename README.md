@@ -1,3 +1,3 @@
-# HackerRank-practice-Questions-for-Virtusa
+# HackerRank-Virtusa
 
 Coding Practice that I took in HackerRank given by Virtusa
