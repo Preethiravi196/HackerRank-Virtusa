@@ -1,0 +1,54 @@
+public class Main 
+{ 
+    static boolean find(int m, int a[], int n, int K)  
+    {  
+        int c = 0;  
+        int s = 0;  
+        for (int i = 0; i < n; i++)  
+        {  
+               if (a[i] > m)  
+                return false;  
+            s += a[i];  
+       if (s > m)  
+            {  
+                c++;  
+                s = a[i];  
+            }  
+        }  
+        c++;  
+      if (c <= K)  
+            return true;  
+        return false;  
+    }  
+   static int equate(int a[], int n, int K)  
+    {  
+        int p = 1;  
+        int r = 0;  
+      for (int i = 0; i < n; i++) 
+        {  
+            r += a[i];  
+        }  
+      int t = 0;  
+        while (p <= r)  
+        {  
+            int m = (p + r) / 2;  
+      if (find(m, a, n, K)) 
+            {  
+                t = m;  
+                r = m - 1;  
+            }  
+            else
+            {  
+                p = m + 1;  
+            }  
+        }  
+        return t;  
+    }  
+    public static void main (String[] args)  
+    { 
+        int a[] = { 2,1,5,1, 2,2,2 };  
+        int n = a.length ;  
+        int K = 3;  
+        System.out.println(equate(a, n, K));  
+    } 
+}
