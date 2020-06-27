@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        Scanner sc=new Scanner(System.in);
+       int[][] a=new int[3][3];
+       int[][] b=new int[3][3];
+       int i,j;
+       for(i=0;i<3;i++)
+       {
+           for(j=0;j<3;j++)
+           {
+               a[i][j]=sc.nextInt();
+           }
+       }
+       for(i=0;i<3;i++)
+       {
+           for(j=0;j<3;j++)
+           {
+               b[i][j]=sc.nextInt();
+               System.out.printf("%d ",a[i][j]+b[i][j]);
+           }
+           System.out.printf("\n");
+       }
+    }
+}
+
