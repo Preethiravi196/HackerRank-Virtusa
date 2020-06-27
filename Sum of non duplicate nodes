@@ -1,0 +1,83 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+class Result {
+
+    /*
+     * Complete the 'sumOfNonDuplicates' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER numberOfArray
+     *  2. INTEGER_ARRAY elements
+     */
+
+    public static int sumOfNonDuplicates(int numberOfArray, List<Integer> elements) {
+            int i,s=0,j=0,c,h;
+            int[] a=new int[numberOfArray];
+            for(i=0;i<numberOfArray;i++)
+        {a[i]=elements.get(i);
+        }
+        for(i=0;i<numberOfArray;i++)
+        {for(j=i+1;j<numberOfArray;j++)
+                {if(a[i]>a[j])
+                {
+                    h=a[i];a[i]=a[j];a[j]=h;
+                }
+                }
+        }
+        for(i=0;i<numberOfArray;i++)
+        {
+            c=0;h=a[i];
+                
+                for(j=i+1;j<numberOfArray;j++)
+                {
+                    if(h==a[j])
+                    {c=1;
+                        i++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if(c==0)
+               { s=s+h;
+               }
+        }
+            
+            return s;
+    }
+
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int numberOfArray = Integer.parseInt(bufferedReader.readLine().trim());
+
+        //int elementsCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> elements = new ArrayList<>();
+
+        for (int i = 0; i < numberOfArray; i++) {
+            int elementsItem = Integer.parseInt(bufferedReader.readLine().trim());
+            elements.add(elementsItem);
+        }
+
+        int result = Result.sumOfNonDuplicates(numberOfArray, elements);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
