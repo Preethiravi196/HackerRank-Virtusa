@@ -1,0 +1,44 @@
+import java.util.Scanner;
+/*
+ * Create the Student class.
+ */
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+ class Student
+ {String y;public static int id=1;
+    public  Student(String a)
+    {   
+        y=id+":"+" ";
+         y=y+a;
+         id++;
+         
+    } 
+    public String toString()
+    {   
+        return y;
+    }
+ }
+public class Solution {   
+    private static final Scanner INPUT_READER = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int numberOfStudents = Integer.parseInt(INPUT_READER.nextLine());
+        
+        while (numberOfStudents-- > 0) {
+            String studentName = INPUT_READER.nextLine();
+            Student student = new Student(studentName);
+            
+            System.out.println(student.toString());
+        }
+    }
+}
+
