@@ -1,0 +1,106 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'funWithAnagrams' function below.
+     *
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts STRING_ARRAY text as parameter.
+     */
+
+    public static List<String> funWithAnagrams(List<String> text) {
+    // Write your code here
+    int i,j,k,l;
+    
+    Vector<String> h=new Vector<String>();
+    Vector<String> f=new Vector<String>();
+    for(i=0;i<text.size();i++){
+        String a=text.get(i);
+        char t[]=a.toCharArray();
+        Arrays.sort(t);
+        String b=new String(t);
+        if(!f.contains(b))
+        {
+            h.add(text.get(i));
+            f.add(b);
+        }
+        
+    }Collections.sort(h);
+return h;
+    }
+
+}
+
+public class Solution {
+
+class Result {
+
+    /*
+     * Complete the 'funWithAnagrams' function below.
+     *
+     * The function is expected to return a STRING_ARRAY.
+     * The function accepts STRING_ARRAY text as parameter.
+     */
+
+    public static List<String> funWithAnagrams(List<String> text) {
+    // Write your code here
+    int i,j,k,l;
+    
+    Vector<String> h=new Vector<String>();
+    Vector<String> f=new Vector<String>();
+    for(i=0;i<text.size();i++){
+        String a=text.get(i);
+        char t[]=a.toCharArray();
+        Arrays.sort(t);
+        String b=new String(t);
+        if(!f.contains(b))
+        {
+            h.add(text.get(i));
+            f.add(b);
+        }
+        
+    }Collections.sort(h);
+return h;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int textCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<String> text = new ArrayList<>();
+
+        for (int i = 0; i < textCount; i++) {
+            String textItem = bufferedReader.readLine();
+            text.add(textItem);
+        }
+
+        List<String> result = Result.funWithAnagrams(text);
+
+        for (int i = 0; i < result.size(); i++) {
+            bufferedWriter.write(result.get(i));
+
+            if (i != result.size() - 1) {
+                bufferedWriter.write("\n");
+            }
+        }
+
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
