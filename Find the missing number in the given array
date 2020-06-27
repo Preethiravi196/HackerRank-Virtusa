@@ -1,0 +1,78 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+class Result {
+
+    /*
+     * Complete the 'calculateMissingNumbers' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY arrays as parameter.
+     */
+
+    public static List<Integer> calculateMissingNumbers(List<Integer> arrays) {
+int h=1,i,m=0,f,j;
+
+int[] a=new int[arrays.size()];
+Vector<Integer> b=new Vector<Integer>();
+//System.out.print(arrays.size());
+for(i=0;i<arrays.size();i++)
+{a[i]=arrays.get(i);
+    if(m<a[i])
+    m=a[i];
+    
+}
+for(i=1;i<=m;i++)
+{
+    f=0;
+    for(j=0;j<arrays.size();j++)
+    {
+        if(i==a[j])
+        {f=1;
+            break;
+        }
+    }
+    if(f==0)
+    b.add(i);
+}
+return b;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int arraysCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> arrays = new ArrayList<>();
+
+        for (int i = 0; i < arraysCount; i++) {
+            int arraysItem = Integer.parseInt(bufferedReader.readLine().trim());
+            arrays.add(arraysItem);
+        }
+
+        List<Integer> result = Result.calculateMissingNumbers(arrays);
+
+        for (int i = 0; i < result.size(); i++) {
+            bufferedWriter.write(String.valueOf(result.get(i)));
+
+            if (i != result.size() - 1) {
+                bufferedWriter.write("\n");
+            }
+        }
+
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
