@@ -1,0 +1,99 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'doSort' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts following parameters:
+     *  1. INTEGER arrayLength
+     *  2. INTEGER_ARRAY elements
+     */
+
+    public static String doSort(int arrayLength, List<Integer> elements) {
+        int i,h,j,n=arrayLength;List<String> y=new ArrayList<String>();
+        int[] a=new int[arrayLength];char u=' ';
+        for(i=0;i<arrayLength;i++)
+        {
+            a[i]=elements.get(i);
+        }
+        for(i=n/2-1;i>=0;i--)
+        heap(a,n,i);
+        for(i=n-1;i>0;i--)
+        {
+            h=a[0];
+            a[0]=a[i];
+            a[i]=h;
+            heap(a,i,0);
+        }
+        for(i=0;i<arrayLength;i++)
+        {
+            y.add(String.valueOf(a[i]));
+        }
+        //String t=y.toString();
+        StringBuilder hm=new StringBuilder();
+        for(i=0;i<arrayLength;i++)
+        {
+            if(i>0)
+            hm.append(u);
+            hm.append(y.get(i));
+        }
+        String ans=hm.toString();
+        return ans;
+        //return t;
+    }
+    public static Integer heap(int a[],int n,int i)
+    {int c=0;
+        int h=i,l=2*i+1,r=2*i+2;
+        if(l<n && a[l] > a[h])
+        h=l;
+        if(r<n && a[r]>a[h])
+        h=r;
+        if(h!=i)
+        {
+            int s=a[i];
+            a[i]=a[h];
+            a[h]=s;
+            heap(a,n,h);
+        }
+        return c;
+
+    }
+
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int arrayLength = Integer.parseInt(bufferedReader.readLine().trim());
+
+        //int elementsCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> elements = new ArrayList<>();
+
+        for (int i = 0; i < arrayLength; i++) {
+            int elementsItem = Integer.parseInt(bufferedReader.readLine().trim());
+            elements.add(elementsItem);
+        }
+
+        String result = Result.doSort(arrayLength, elements);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
+
