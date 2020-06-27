@@ -1,0 +1,66 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+class Result {
+
+    /*
+     * Complete the 'rearrange' function below.
+     *
+     * The function is expected to return a BOOLEAN.
+     * The function accepts following parameters:
+     *  1. INTEGER arrarLength
+     *  2. INTEGER_ARRAY elements
+     */
+
+    public static boolean rearrange(int arrayLength, List<Integer> elements) {
+int m=Integer.MAX_VALUE,h=0,i;
+System.out.print(elements);
+for(i=0;i<arrayLength;i++)
+{
+    if(m>elements.get(i))
+    m=elements.get(i);
+    
+}//System.out.print(m);
+Collections.sort(elements);
+System.out.print(elements);
+for(i=0;i<arrayLength;i++)
+{
+if(elements.get(i)!=m)
+{//System.out.print(elements.get(i));
+    return false;
+}
+m++;
+}return true;
+    }
+
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int arrarLength = Integer.parseInt(bufferedReader.readLine().trim());
+
+        //int elementsCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> elements = new ArrayList<>();
+
+        for (int i = 0; i < arrarLength; i++) {
+            int elementsItem = Integer.parseInt(bufferedReader.readLine().trim());
+            elements.add(elementsItem);
+        }
+
+        boolean result = Result.rearrange(arrarLength, elements);
+
+        bufferedWriter.write(String.valueOf(result ? 1 : 0));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
