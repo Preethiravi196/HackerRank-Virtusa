@@ -1,0 +1,75 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+class Result {
+
+    /*
+     * Complete the 'minimumSwaps' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY popularity as parameter.
+     */
+
+    public static int minimumSwaps(List<Integer> popularity) {
+    // Write your code here
+    int i,j,k,l,n,ts=0;
+    n=popularity.size();
+    int[] a=new int[n+1];
+    a[0]=0;k=0;
+    for(i=n;i>=1;i--)
+   {a[i]=popularity.get(k);
+    k++;}
+    boolean h[]=new boolean[n+1];
+    
+    for(i=1;i<=n;i++)
+    {//System.out.print(h[a[i]]);
+        if(h[a[i]])
+        continue;
+        if(a[i]==i)
+        {
+            h[a[i]]=true;
+            continue;
+        }int e=0,ci=i;
+        while(!h[a[ci]])
+        {
+            h[a[ci]]=true;
+            e++;
+            ci=a[ci];
+           
+        }
+        ts+=e-1;
+        
+    }
+    return ts;
+    }
+
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int popularityCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> popularity = new ArrayList<>();
+
+        for (int i = 0; i < popularityCount; i++) {
+            int popularityItem = Integer.parseInt(bufferedReader.readLine().trim());
+            popularity.add(popularityItem);
+        }
+
+        int result = Result.minimumSwaps(popularity);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
