@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+        Scanner sc=new Scanner(System.in);
+        String a=sc.nextLine();
+        String b=sc.nextLine();
+        int i,j,f,h=0;
+        if(a.length()!=b.length())
+        {h=1;
+            
+        }
+        else
+        {
+            for(i=0;i<a.length();i++)
+            {f=0;
+                for(j=0;j<a.length();j++)
+                {if(a.charAt(i)==b.charAt(j))
+                {f=1;
+                    break;
+                }
+            }
+            if(f==0)
+            {h=1;
+               break;
+            }
+            }
+        }
+        if(h==0)
+        System.out.println("true");
+        else
+        System.out.println("false");
+    }
+}
