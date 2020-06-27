@@ -1,0 +1,41 @@
+public class Solution {
+
+class Result {
+
+    /*
+     * Complete the 'doStringReverse' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING value as parameter.
+     */
+
+    public static String doStringReverse(String value) {
+            
+            int i;
+            String a="";
+            for(i=value.length()-1;i>=0;i--)
+            {
+                a=a+value.charAt(i);
+            }
+               
+            return a;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String value = bufferedReader.readLine();
+
+        String result = Result.doStringReverse(value);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
