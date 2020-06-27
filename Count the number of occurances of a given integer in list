@@ -1,0 +1,75 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+class Result {
+
+    /*
+     * Complete the 'numberOfOccurences' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER noOfDigits
+     *  2. INTEGER_ARRAY list
+     *  3. INTEGER numToCount
+     */
+ public static int count(Stack<Integer> a) {
+          int i=0;
+          while(!a.empty())
+          {a.pop();
+              i++;
+          }
+          return i;
+        
+      }
+
+   
+
+    public static int numberOfOccurences(int noOfDigits, List<Integer> list, int numToCount) {int c=0;
+    Stack<Integer> a=new Stack<Integer>();
+
+for(int i=0;i<list.size();i++)
+{
+    if(numToCount==list.get(i))
+    a.push(list.get(i));
+    
+}
+c=count(a);
+return c;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int noOfDigits = Integer.parseInt(bufferedReader.readLine().trim());
+
+        //int listCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < noOfDigits; i++) {
+            int listItem = Integer.parseInt(bufferedReader.readLine().trim());
+            list.add(listItem);
+        }
+
+        int numToCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        int result = Result.numberOfOccurences(noOfDigits, list, numToCount);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
