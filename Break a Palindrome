@@ -1,0 +1,64 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+
+class Result {
+
+    /*
+     * Complete the 'breakPalindrome' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING palindromeStr as parameter.
+     */
+
+    public static String breakPalindrome(String palindromeStr) {
+    // Write your code here
+    int i,f=0;
+    String t="";
+    System.out.print(palindromeStr);
+    for(i=0;i<palindromeStr.length()/2;i++)
+    {
+        if(palindromeStr.charAt(i)!='a')
+        {
+            f=1;
+            break;
+        }
+    }
+    if(palindromeStr.length()==1 || f==0)return "IMPOSSIBLE";
+    for(i=0;i<palindromeStr.length()/2;i++)
+    {
+        if(palindromeStr.charAt(i)!='a')
+        {
+            return palindromeStr.substring(0,i)+'a'+palindromeStr.substring(i+1);
+            
+        }
+
+    }
+    return palindromeStr.substring(0,palindromeStr.length()-1+'b');
+    
+    }
+
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String palindromeStr = bufferedReader.readLine();
+
+        String result = Result.breakPalindrome(palindromeStr);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
