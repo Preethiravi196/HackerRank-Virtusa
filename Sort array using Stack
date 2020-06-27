@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+        Scanner sc=new Scanner (System.in);
+        Stack<Integer> a=new Stack<Integer>();
+        Stack<Integer> t=new Stack<Integer>();
+        int n,i,j;
+        n=sc.nextInt();
+        int[] b=new int[n];
+        for(i=0;i<n;i++)
+        a.push(sc.nextInt());
+        while(!a.empty())
+        {
+            int h=a.peek();
+            a.pop();
+            while(!t.empty() && t.peek()>h)
+            {   a.push(t.peek());
+                t.pop();
+            }
+            t.push(h);
+
+        }
+        for(i=0;i<n;i++)
+        {
+            b[i]= t.pop();
+        }
+        for(i=n-1;i>=0;i--)
+        System.out.printf("%d ",b[i]);
+    }
+}
